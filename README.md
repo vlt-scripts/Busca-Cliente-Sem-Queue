@@ -1,0 +1,4 @@
+# Busca-Cliente-Sem-Queue
+"Muitas vezes, erros durante o cadastro do plano no Mk-auth podem fazer com que a MikroTik não associe a queue de controle de largura de banda ao cliente PPPoE correspondente. Este script compara o número de clientes PPPoE ativos com o número de queue de controle de banda ativas. Se esses números não forem iguais, o script verifica quais clientes PPPoE não têm uma queue associada. Ao final da verificação, uma linha é registrada no log para informar quais clientes PPPoE não têm uma queue associada."  Se todas as conexões PPPoE estiverem normais, o script apenas registra o número total de conexões no log de avisos, sem registrar erros.
+
+Só pegar o texto que esta acima no " Confere--PPPOE_V2.0.txt " e colocar em system --> script e dar um Run Script que ele vai checar se esta tudo em ordem as queues.

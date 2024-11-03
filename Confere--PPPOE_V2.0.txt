@@ -1,0 +1,20 @@
+:global pppsq "";
+:global npppoe [/interface pppoe-server print count-only];
+
+:foreach i in=[/interface pppoe-server find] do={
+    :global nppp "$i";
+    :global ppp [/interface pppoe-server get number=$nppp name];
+
+    :if ([/queue simple find name=$ppp]!="") do={
+        :global pppq [/queue simple get value-name=name $ppp];
+        :if ([$ppp]!=$pppq) do={};
+    } else={
+        :set pppsq ($pppsq . ", " . $ppp);
+    };
+};
+
+:log warning "Existem $npppoe PPPoEs conectados.";
+
+:if ([:len $pppsq] > 0) do={
+    :log error "Existem clientes sem controle de banda!!!, $pppsq.";
+};
